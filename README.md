@@ -18,7 +18,7 @@
 
 1. Buatlah sebuah program time server dengan ketentuan sebagai berikut
    - a. Membuka port di port 45000 dengan transport TCP 
-   - b. Server harus dapat melayani request yang concurrent, gunakan contoh multithreading pada ini 
+   - b. Server harus dapat melayani request yang concurrent, gunakan contoh multithreading pada [ini](httpsgithub.comrm77progjarblobmasterprogjar3threading_examplesserver_thread.py)
    - c. Ketentuan request yang dilayani
       - i. Diawali dengan string “TIME dan diakhiri dengan karakter 13 dan karakter 10” 
       - ii. Setiap request dapat diakhiri dengan string “QUIT” yang diakhiri dengan karakter 13 dan 10 
