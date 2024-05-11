@@ -1,7 +1,7 @@
 # Tugas 2 Pemrograman Jaringan
-Nama: Adrian Aziz Santoso (NRP 5025221229)
-Kelas: Pemrograman Jaringan C
-Tanggal: Sabtu, 11 Mei 2024
+- Nama: Adrian Aziz Santoso (NRP 5025221229)
+- Kelas: Pemrograman Jaringan C
+- Tanggal: Sabtu, 11 Mei 2024
 
 - Tutorial install Docker pada Terminal Linux: www.youtube.com/watch?v=cVoR9rY31EQ
 - Tutorial VPN: its.ac.id/dptsi/wp-content/uploads/sites/8/2024/03/Panduan-Akses-VPN.pdf
