@@ -16,8 +16,8 @@
 
 ### Instruksi:
 
-1. Buatlah sebuah program time server dengan ketentuan sebagai berikut 
-    a. Membuka port di port 45000 dengan transport TCP 
+1. Buatlah sebuah program time server dengan ketentuan sebagai berikut
+   a. Membuka port di port 45000 dengan transport TCP 
     b. Server harus dapat melayani request yang concurrent, gunakan contoh multithreading pada ini 
     c. Ketentuan request yang dilayani 
         i. Diawali dengan string “TIME dan diakhiri dengan karakter 13 dan karakter 10” 
@@ -26,7 +26,7 @@
         i. Dalam bentuk string (UTF-8) 
         ii. Diawali dengan “JAM<spasi><jam>” 
         iii. <jam> berisikan info jam dalam format “hh:mm:ss” dan diakhiri dengan karakter 13 dan karakter 10 
-2. Jalankan di lab environment 
+3. Jalankan di lab environment 
     a. Tuliskan dalam satu file PDF dengan nama TUGAS2.PDF 
         i. Link menuju source code anda di github (masing-masing harus punya repository di github: https://github.com/adrianazizsantoso/tugas-2-pemrograman-jaringan/blob/main/README.md?plain=1) 
         ii. Capturelah hasil eksekusi program server anda
