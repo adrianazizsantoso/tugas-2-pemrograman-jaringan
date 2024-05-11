@@ -28,7 +28,7 @@
       - iii. <jam> berisikan info jam dalam format “hh:mm:ss” dan diakhiri dengan karakter 13 dan karakter 10 
 2. Jalankan di lab environment 
    - a. Tuliskan dalam satu file PDF dengan nama TUGAS2.PDF 
-      - i. Link menuju source code anda di github (masing-masing harus punya repository di github: https://github.com/adrianazizsantoso/tugas-2-pemrograman-jaringan/blob/main/README.md?plain=1) 
+      - i. Link menuju source code anda di github (masing-masing harus punya repository di github: https://github.com/adrianazizsantoso/tugas-2-pemrograman-jaringan/blob/main/Tugas2.py) 
       - ii. Capturelah hasil eksekusi program server anda
 
 ### Notes:
