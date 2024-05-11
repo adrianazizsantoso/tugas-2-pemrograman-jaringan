@@ -1,41 +1,55 @@
-# Tugas 2 Pemrograman Jaringan
-oleh: Adrian Aziz Santoso (NRP 5025221229)
-kelas: Pemrograman Jaringan C
+import socket
+import threading
+import logging
+import time
 
-- Tutorial install Docker pada Terminal Linux: www.youtube.com/watch?v=cVoR9rY31EQ
-- Tutorial VPN: its.ac.id/dptsi/wp-content/uploads/sites/8/2024/03/Panduan-Akses-VPN.pdf
-- Tutorial menjalankan Jupyter Notebook: www.youtube.com/watch?v=bWwqSXxf3iw
+class ProcessTheClient(threading.Thread):
+    def __init__(self, connection, address):
+        self.connection = connection
+        self.address = address
+        threading.Thread.__init__(self)
 
-1. Buatlah sebuah program time server dengan ketentuan sebagai berikut 
-  a. Membuka port di port 45000 dengan transport TCP 
-  b. Server harus dapat melayani request yang concurrent, gunakan contoh multithreading pada ini 
-  c. Ketentuan request yang dilayani 
-    i. Diawali dengan string “TIME dan diakhiri dengan karakter 13 dan karakter 10” 
-    ii. Setiap request dapat diakhiri dengan string “QUIT” yang diakhiri dengan karakter 13 dan 10 
-  d. Server akan merespon dengan jam dengan ketentuan 
-    i. Dalam bentuk string (UTF-8) 
-    ii. Diawali dengan “JAM<spasi><jam>” 
-    iii. <jam> berisikan info jam dalam format “hh:mm:ss” dan diakhiri dengan karakter 13 dan karakter 10 
-2. Jalankan di lab environment 
-  a. Tuliskan dalam satu file PDF dengan nama TUGAS2.PDF 
-    i. Link menuju source code anda di github (masing-masing harus punya repository di github: )
-    ii. Capturelah hasil eksekusi program server anda
+    def run(self):
+        while True:
+            data = self.connection.recv(32).decode('utf-8')
+            if data:
+                response = self.process_request(data)
+                self.connection.sendall(response.encode('utf-8'))
+                if data.endswith("QUIT\r\n"):
+                    break
+            else:
+                break
+        self.connection.close()
 
-IP Address:  `192.168.15.128/24`
-Container ID dapat dicek di Terminal Linux dengan command `nmcli -p device show`
-Selengkapnya dapat dilihat di: www.youtube.com/watch?v=XduCxUhUUdQ
+    def process_request(self, request):
+        if request.startswith("TIME") and request.endswith("\r\n"):
+            current_time = time.strftime("%H:%M:%S", time.localtime())
+            response = f"JAM {current_time}\r\n"
+        else:
+            response = "Invalid request\r\n"
+        return response
 
-<img width="510" alt="image" src="https://github.com/adrianazizsantoso/tugas-2-pemrograman-jaringan/assets/115202624/21f5a2e2-d584-4c97-aae7-5c700ad47335">
+class Server(threading.Thread):
+    def __init__(self):
+        self.the_clients = []
+        self.my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        threading.Thread.__init__(self)
 
-<img width="510" alt="image" src="https://github.com/adrianazizsantoso/tugas-2-pemrograman-jaringan/assets/115202624/caa1273f-160a-4f9e-818f-da01e3cacbf1">
+    def run(self):
+        self.my_socket.bind(('0.0.0.0', 55000))
+        self.my_socket.listen(1)
+        while True:
+            self.connection, self.client_address = self.my_socket.accept()
+            logging.warning(f"connection from {self.client_address}")
+            print(f"Connection from {self.client_address}")
+            
+            clt = ProcessTheClient(self.connection, self.client_address)
+            clt.start()
+            self.the_clients.append(clt)
 
-<img width="510" alt="image" src="https://github.com/adrianazizsantoso/tugas-2-pemrograman-jaringan/assets/115202624/58d56d58-0343-43b5-b0dd-932d67f52b3d">
+def main():
+    svr = Server()
+    svr.start()
 
-
-
-
-
-
-
-
-
+if __name__ == "__main__":
+    main()
