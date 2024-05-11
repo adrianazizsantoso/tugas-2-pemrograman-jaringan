@@ -1,11 +1,18 @@
+<div>
 # Tugas 2 Pemrograman Jaringan
+</div>
+
 - Nama: Adrian Aziz Santoso (NRP 5025221229)
 - Kelas: Pemrograman Jaringan C
 - Tanggal: Sabtu, 11 Mei 2024
 
+### Link penting:
+
 - Tutorial install Docker pada Terminal Linux: www.youtube.com/watch?v=cVoR9rY31EQ
 - Tutorial VPN: its.ac.id/dptsi/wp-content/uploads/sites/8/2024/03/Panduan-Akses-VPN.pdf
 - Tutorial menjalankan Jupyter Notebook: www.youtube.com/watch?v=bWwqSXxf3iw
+
+### Instruksi:
 
 1. Buatlah sebuah program time server dengan ketentuan sebagai berikut 
     a. Membuka port di port 45000 dengan transport TCP 
@@ -22,9 +29,13 @@
         i. Link menuju source code anda di github (masing-masing harus punya repository di github: https://github.com/adrianazizsantoso/tugas-2-pemrograman-jaringan/blob/main/README.md?plain=1) 
         ii. Capturelah hasil eksekusi program server anda
 
+### Notes:
+
 IP Address: `192.168.15.128/24`
 Container ID dapat dicek di Terminal Linux dengan command `nmcli -p device show`
 Selengkapnya dapat dilihat di: www.youtube.com/watch?v=XduCxUhUUdQ
+
+### Screenshot:
 
 <img width="510" alt="image" src="https://github.com/adrianazizsantoso/tugas-2-pemrograman-jaringan/assets/115202624/33d8028f-af56-45f6-83ff-c33fd6a25239">
 
